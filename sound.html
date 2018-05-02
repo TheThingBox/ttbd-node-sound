@@ -1,0 +1,46 @@
+<script type="text/x-red" data-template-name="sound">
+  <div class="form-row">
+    <label for="node-input-sound"><i class="fa fa-tasks"></i> Sound</label>
+    <input type="text" id="node-input-sound" placeholder="Sound">
+  </div>
+  <br/>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="sound">
+  <h3>Play mp3 !</h3>
+  <p>Play the mp3 file found on the incomming flow or in the edit fields if there is nothing in the incomming flow.</p>
+  <p>The first output is for when the sound is played. The second is for when the sound is ended.</p>
+
+  <h3>Advanced</h3>
+  <p>The node takes the mp3 URL in msg.sound || msg.value || msg.payload that override any value in the node editable form, if defined.</p>
+  <p>It understands the intents "Open", "Close", "More", "Less", "Intensity".</p>
+  <p>It understand an http URL as well as complete path on the Thingbox (beginning with "/") as well as a relativ path.
+  In this case, the path is relativ to /root/sounds that already contains sounds named from beep1.mp3 to beep50.mp3.</p>
+  <p>If no dot is found in the path, ".mp3" is added at the end of the name of the sound.</p>
+  <p>Based on (forked) lib https://github.com/turingou/player.</p>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('sound',{
+    category: 'basic',
+    defaults: {
+      name: { value: "" },
+      sound: { value: "" }
+    },
+    color: "#fff",
+    inputs:1,
+    outputs: 2,
+    icon: "sound.png",
+    align: "right",
+    label: function() {
+      return this.name || this.sound || "sound";
+    },
+    labelStyle: function() {
+      return this.name ? "node_label_italic" : "";
+    }
+  });
+</script>
