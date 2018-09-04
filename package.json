@@ -14,6 +14,6 @@
   ],
   "dependencies": {
     "player": "TheThingBox/player#a54b7dc",
-    "ttbd-exec": "TheThingBox/ttbd-exec#f9d47d8"
+    "ttbd-exec": "TheThingBox/ttbd-exec#8b44afa"
   }
 }
