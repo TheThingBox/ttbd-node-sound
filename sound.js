@@ -82,6 +82,9 @@ module.exports = function(RED) {
     stopPlayer(node);
     node.player = new Player([sound],{downloads:"/root/userdir/"});
     node.player.on("error", function(err) {
+      if(err === "No next song was found"){
+        return;
+      }
       node.warn(err);
     });
     node.player.on("finish", function(current) {
