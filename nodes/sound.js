@@ -100,18 +100,21 @@ module.exports = function(RED) {
   }
 
   function startPlayer(node, msg) {
-    var toplay =  msg.sound || msg.value || msg.payload || "";
+    var toplay =  node.sound;
 
-    if(toplay == "" || typeof toplay != "string")
-      toplay = node.sound;
+    if(toplay === "") {
+      toplay = msg.payload;
+    }
 
-    if(toplay.charAt(0) != "/" && toplay.indexOf("http://") != 0)
+    if(toplay === "") {
+      return;
+    }
+
+    if(toplay.charAt(0) !== "/" && toplay.indexOf("http://") !== 0 && toplay.indexOf("https://") !== 0 ){
       toplay = path.join('/root', 'sounds', toplay)
+    }
 
-    if(toplay.indexOf(".") == -1)
-      toplay += ".mp3";
-
-    if(toplay && node.player.list[0] != toplay && toplay != "/root/sounds/.mp3") {
+    if(toplay && node.player.list[0] !== toplay) {
       createPlayer(node, toplay);
     }
 

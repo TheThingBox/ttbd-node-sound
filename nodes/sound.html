@@ -20,7 +20,6 @@
   <p>It understands the intents "Open", "Close", "More", "Less", "Intensity".</p>
   <p>It understand an http URL as well as complete path on the Thingbox (beginning with "/") as well as a relativ path.
   In this case, the path is relativ to /root/sounds that already contains sounds named from beep1.mp3 to beep50.mp3.</p>
-  <p>If no dot is found in the path, ".mp3" is added at the end of the name of the sound.</p>
   <p>Based on (forked) lib https://github.com/turingou/player.</p>
 </script>
 
@@ -32,7 +31,7 @@
       sound: { value: "" }
     },
     color: "#fff",
-    inputs:1,
+    inputs: 1,
     outputs: 2,
     icon: "sound.png",
     align: "right",
